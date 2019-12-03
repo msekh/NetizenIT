@@ -19,53 +19,53 @@ import org.springframework.web.bind.annotation.RestController;
 import com.netizenbd.springbootApp.dao.StudentRepository;
 import com.netizenbd.springbootApp.entity.Student;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
-import com.netizenbd.springbootApp.service.StudentService;
+import com.netizenbd.springbootApp.service.StudentServiceImpl;
 
 @RestController
-@RequestMapping("/crud/api")
+@RequestMapping("/students/api")
 public class StudentController {
 	@Autowired
 	StudentRepository repo;
 	@Autowired
-	private StudentService studentService;
+	StudentServiceImpl service;
 
 	/* Show all Students */
 	@GetMapping("/all_students")
-	public ResponseEntity<List<Student>> getAllProduct() {
-		return ResponseEntity.ok().body(studentService.getAllStudents());
+	public ResponseEntity<List<Student>> getAllStudent() {
+		return ResponseEntity.ok().body(service.getAllStudents());
 	}
 
 	/* Add a Student */
-	@PostMapping("/students")
+	@PostMapping("/add_students")
 	public ResponseEntity<Student> createStudent(@RequestBody Student Student) {
-		return ResponseEntity.ok().body(this.studentService.createStudent(Student));
+		return ResponseEntity.ok().body(this.service.createStudent(Student));
 	}
 
 	/* Find a student */
 	@GetMapping("/students/{id}")
 	public Optional<Student> getStudentById(@PathVariable(value = "id") Long id) {
-		return Optional.ofNullable(this.studentService.getStudentById(id)).orElseThrow(() -> new ResourceNotFoundException("Student ", "id", id));
-		
+		return Optional.ofNullable(this.repo.findById(id))
+				.orElseThrow(() -> new ResourceNotFoundException("Student ", "id", id));
+
 	}
 
-	
 	/* update a student */
 	@PutMapping("/students/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable(value = "id") Long sId,
 			@Valid @RequestBody Student studentDetails) {
 		Student student = this.repo.findById(sId)
-				.orElseThrow(() -> new ResourceNotFoundException("Student", "id", sId));
+				.orElseThrow(() -> new ResourceNotFoundException("Student not found.", "id", sId));
 		student.setFirstName(studentDetails.getFirstName());
 		student.setLastName(studentDetails.getLastName());
 
-		final Student updateStudent = studentService.updateStudent(student);
+		final Student updateStudent = service.updateStudent(student);
 		return ResponseEntity.ok(updateStudent);
 	}
 
 	/* Delete A Student */
 	@DeleteMapping("/students/{id}")
 	public String deleteStudent(@PathVariable(value = "id") Long sId) {
-		studentService.deleteStudent(sId);
+		service.deleteStudent(sId);
 		return "Deleted";
 	}
 }

@@ -2,8 +2,6 @@ package com.netizenbd.springbootApp.service;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.netizenbd.springbootApp.entity.ClassRoom;
@@ -24,7 +22,6 @@ public interface ClassRoomService {
 
 	List<ClassRoom> findClassroomsByDescriptionContainsIgnoreCase(String description);
 
-	List<ClassRoom> findClassroomsByTitleAndAndDescription(@Param("title") String title,
-			@Param("description") String description);
+	List<ClassRoom> findClassroomsByTitleAndAndDescription(String title, String description);
 
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.netizenbd.springbootApp.entity.Student;
 
-@Service
+
 public interface StudentService {
 	Student createStudent(Student student);
 
