@@ -36,34 +36,36 @@ public class ClassRoomController {
 
 	@PostMapping("/add_classroom")
 	public ResponseEntity<ClassRoom> createClassroom(@RequestBody ClassRoom room) {
-		return ResponseEntity.ok().body(this.service.createClassRoom(room));
+		return ResponseEntity.ok().body(this.service.addClassRoom(room));
 	}
 
-	@GetMapping("/class/{code}")
-	public Optional<ClassRoom> getRoomByCode(@PathVariable(value = "code") String code) {
-		return Optional.ofNullable(this.repo.findById(code)
-				.orElseThrow(() -> new ResourceNotFoundException("Class Room code", "code", code)));
+	@GetMapping("/class_roomId/{roomId}")
+	public Optional<ClassRoom> getRoomByCode(@PathVariable(value = "roomId") Integer roomId) {
+		return Optional.ofNullable(this.repo.findById(roomId)
+				.orElseThrow(() -> new ResourceNotFoundException("Class Room Id", "id", roomId)));
+	}
+
+	@GetMapping("/class_title/{title}")
+	public ResponseEntity<List<ClassRoom>> findClassRoomsByTitleIgnoreCase(
+			@PathVariable(value = "title") String title) {
+		return ResponseEntity.ok().body(service.findClassroomsByDescriptionIgnoreCase(title));
 	}
 
 	/* update a class room */
-	@PutMapping("/class/{code}")
-	public ResponseEntity<ClassRoom> updateRoom(@PathVariable(value = "code") String code,
+	@PutMapping("/class/{roomId}")
+	public ResponseEntity<ClassRoom> updateRoom(@PathVariable(value = "roomId") Integer room_id,
 			@Valid @RequestBody ClassRoom roomDetails) {
 
-		ClassRoom room = this.repo.findById(code)
-				.orElseThrow(() -> new ResourceNotFoundException("Room", "code", code));
-		
-		room.setTitle(roomDetails.getTitle());
+		ClassRoom room = this.repo.findById(room_id)
+				.orElseThrow(() -> new ResourceNotFoundException("Room", "code",room_id));
+
+		room.setRoomNo(roomDetails.getRoomNo());
+		room.setCapasity(roomDetails.getCapasity());
 		room.setDescription(roomDetails.getDescription());
-		
+
 		final ClassRoom updateRoom = service.updateClassRoom(room);
 		return ResponseEntity.ok(updateRoom);
 
 	}
-	@GetMapping("/class/{title}")
-	public ResponseEntity<List<ClassRoom>>findClassRoomsByTitleIgnoreCase(@PathVariable(value = "title")String title){
-		return ResponseEntity.ok().body(service.findClassroomsByDescriptionContainsIgnoreCase(title));	
-	}
-	
-	
+
 }

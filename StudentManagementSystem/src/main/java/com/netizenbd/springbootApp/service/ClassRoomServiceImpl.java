@@ -1,11 +1,10 @@
 package com.netizenbd.springbootApp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.netizenbd.springbootApp.dao.ClassRoomRepository;
@@ -22,14 +21,14 @@ public class ClassRoomServiceImpl {
 		return repo.findAll();
 	}
 
-	public ClassRoom createClassRoom(ClassRoom room) {
+	public ClassRoom addClassRoom(ClassRoom room) {
 
 		return this.repo.save(room);
 	}
 
-	public Optional<ClassRoom> getClassRoomByCode(String code) {
+	public Optional<ClassRoom> getClassRoomById(Integer roomId) {
 
-		return this.repo.findById(code);
+		return Optional.ofNullable(this.repo.findById(roomId)).orElseThrow(() -> new ResourceNotFoundException("Room", "id", roomId));
 	}
 
 	public ClassRoom updateClassRoom(ClassRoom room) {
@@ -37,39 +36,37 @@ public class ClassRoomServiceImpl {
 		return this.repo.saveAndFlush(room);
 	}
 
-	public void deleteClassRoom(String code) {
-		ClassRoom deleteRoom = this.repo.findById(code)
-				.orElseThrow(() -> new ResourceNotFoundException("Class Room", "id", code));
+	public void deleteClassRoom(Integer roomId) {
+		ClassRoom deleteRoom = this.repo.findById(roomId)
+				.orElseThrow(() -> new ResourceNotFoundException("Class Room", "id", roomId));
 		this.repo.delete(deleteRoom);
 	}
 
-	public List<ClassRoom> findClassRoomsByTitleContainsIgnoreCase(String title) {
-		//List<ClassRoom> room = repo.findAll(); // or this.getAllClassRoom();
+	public List<ClassRoom> findClassRoomsByRoomNoIgnoreCase(String room_no) {
+		// List<ClassRoom> room = repo.findAll(); // or this.getAllClassRoom();
 
-		return this.repo.findAll().stream()
-				.filter(titleList -> titleList.getTitle() != null && title.equalsIgnoreCase(titleList.getTitle()))
-				.collect(Collectors.toList());
+		/*
+		 * return this.repo.findAll().stream() .filter(titleList -> titleList.getTitle()
+		 * != null && title.equalsIgnoreCase(titleList.getTitle()))
+		 * .collect(Collectors.toList());
+		 */
+		return this.repo.findByRoomNo(room_no);
 	}
 
-	public List<ClassRoom> findClassroomsByDescriptionContainsIgnoreCase(String description) {
-		//List<ClassRoom> room = repo.findAll(); // or this.getAllClassRoom();
+	public List<ClassRoom> findClassroomsByDescriptionIgnoreCase(String description) {
+		// List<ClassRoom> room = repo.findAll(); // or this.getAllClassRoom();
 
-		return repo.findAll().stream().filter(descriptionList -> descriptionList.getDescription() != null
-				&& description.equalsIgnoreCase(descriptionList.getTitle())).collect(Collectors.toList());
-	}
+		/*
+		 * return repo.findAll().stream().filter(descriptionList ->
+		 * descriptionList.getDescription() != null &&
+		 * description.equalsIgnoreCase(descriptionList.getTitle())).collect(Collectors.
+		 * toList());
+		 */
+		return this.repo.findByDescription(description);
+		}
 
-	public List<ClassRoom> findClassroomsByTitleAndAndDescription(String title, String description) {
-		 List<ClassRoom> classrooms = new ArrayList<>();
-	        if (title != null && description != null) {
-	            classrooms = findClassroomsByTitleAndAndDescription(title, description);
-	        } else if (title != null) {
-	            classrooms = findClassRoomsByTitleContainsIgnoreCase(title);
-	        } else if (description != null) {
-	            classrooms = findClassroomsByDescriptionContainsIgnoreCase(description);
-	        } else {
-	            classrooms = repo.findAll();
-	        }
-	        return classrooms;
+	public List<ClassRoom> findClassRoomByRoomNoAndAndDescription(String room_no, String description) {
+		 return this.repo.findByRoomNoAndDescription(room_no, description);
 	}
 
 }

@@ -15,14 +15,14 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Course {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "s_id_Sequence")
-	@SequenceGenerator(name = "s_id_Sequence", sequenceName = "ID_SEQ", initialValue = 1000, allocationSize = 100)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "c_id_sequence")
+	@SequenceGenerator(name = "c_id_sequence", sequenceName = "cId_SEQ", initialValue = 101, allocationSize = 50)
+	private Integer id;
 	@NonNull
-	private String firstName;
+	private String courseName;
 	@NonNull
-	private String lastName;
+	private String courseCode;
 
 }

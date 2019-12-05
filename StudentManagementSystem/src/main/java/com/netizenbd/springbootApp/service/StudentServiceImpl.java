@@ -32,8 +32,8 @@ public class StudentServiceImpl {
 	}
 
 	
-	public Optional<Student> getStudentById(long studentId) {
-		return Optional.ofNullable(this.repo.findById(studentId)).orElseThrow(() -> new ResourceNotFoundException("Student", "id", studentId));
+	public Optional<Student> getStudentById(long i) {
+		return Optional.ofNullable(this.repo.findById(i)).orElseThrow(() -> new ResourceNotFoundException("Student", "id", i));
 	}
 
 	public void deleteStudent(Long id) {

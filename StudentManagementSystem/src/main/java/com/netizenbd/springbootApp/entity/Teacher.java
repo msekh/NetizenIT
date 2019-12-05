@@ -1,6 +1,8 @@
 package com.netizenbd.springbootApp.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,14 +17,15 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Teacher {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "s_id_Sequence")
-	@SequenceGenerator(name = "s_id_Sequence", sequenceName = "ID_SEQ", initialValue = 1000, allocationSize = 100)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "t_id_sequence")
+	@SequenceGenerator(name = "t_id_sequence", sequenceName = "tId_SEQ", initialValue = 10001, allocationSize = 5)
 	private Long id;
 	@NonNull
-	private String firstName;
+	private String teacherName;
 	@NonNull
-	private String lastName;
+	@Enumerated(EnumType.STRING)
+	private TeacherType type;
 
 }

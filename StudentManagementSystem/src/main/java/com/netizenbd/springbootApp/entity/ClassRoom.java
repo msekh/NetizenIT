@@ -1,6 +1,8 @@
 package com.netizenbd.springbootApp.entity;
 
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -14,10 +16,13 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 public class ClassRoom {
 	@Id
+	@GeneratedValue
+	private Integer roomId;
 	@NonNull
-	private String code;
+	private String roomNo;
 	@NonNull
-	private String title;
+	private Integer capasity;
 	@NonNull
 	private String description;
+	
 }
