@@ -7,12 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.netizenbd.springbootApp.entity.ClassDetails;
 import com.netizenbd.springbootApp.entity.ClassRoom;
+import com.netizenbd.springbootApp.entity.ClassRoutine;
 import com.netizenbd.springbootApp.entity.Course;
 import com.netizenbd.springbootApp.entity.Student;
 import com.netizenbd.springbootApp.entity.Teacher;
 import com.netizenbd.springbootApp.entity.TeacherType;
 import com.netizenbd.springbootApp.service.ClassDetailsServiceImpl;
 import com.netizenbd.springbootApp.service.ClassRoomServiceImpl;
+import com.netizenbd.springbootApp.service.ClassRoutineServiceImpl;
 import com.netizenbd.springbootApp.service.CourseServiceImpl;
 import com.netizenbd.springbootApp.service.StudentServiceImpl;
 import com.netizenbd.springbootApp.service.TeacherServeiceImpl;
@@ -32,7 +34,8 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 	private TeacherServeiceImpl teacherServeice;
 	@Autowired
 	private CourseServiceImpl courseService;
-	
+	@Autowired
+	private ClassRoutineServiceImpl classRoutineService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootCrudApplication.class, args);
@@ -41,50 +44,79 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		/* Sudent */
-		service.createStudent(new Student("Sekh", "Mahadi"));
-		service.createStudent(new Student("Shekh", "Rupon"));
-		service.createStudent(new Student("Shekh", "Niaz"));
+		Student s1 = new Student("Sekh", "Mahadi");
+		service.createStudent(s1);
+		Student s2 = new Student("Shekh", "Rupon");
+		service.createStudent(s2);
+		Student s3 = new Student("Shekh", "Niaz");
+		service.createStudent(s3);
 
 		log.info("All Studentss -> {}", service.getAllStudents());
 		log.info("Single Student -> {}", service.getStudentById(2));
 		/* Class Room */
-		classService.addClassRoom(new ClassRoom("C04", 20, "Available"));
-		classService.addClassRoom(new ClassRoom("C10", 30, "unAvailable"));
-		classService.addClassRoom(new ClassRoom("C09", 25, "Available"));
-		classService.addClassRoom(new ClassRoom("C20", 40, "Available"));
-		classService.addClassRoom(new ClassRoom("C08", 35, "Available"));
+		ClassRoom cr1 = new ClassRoom("C04", 20, "Available");
+		classService.addClassRoom(cr1);
+		ClassRoom cr2 = new ClassRoom("C10", 30, "unAvailable");
+		classService.addClassRoom(cr2);
+		ClassRoom cr3 = new ClassRoom("C09", 25, "Available");
+		classService.addClassRoom(cr3);
+		ClassRoom cr4 = new ClassRoom("C20", 40, "Available");
+		classService.addClassRoom(cr4);
+		ClassRoom cr5 = new ClassRoom("C08", 35, "Available");
+		classService.addClassRoom(cr5);
 
 		log.info("All Class Room -> {}", classService.getAllClassRoom());
 		log.info("All Class Room Find By title and description-> {}",
 				classService.findClassroomsByDescriptionIgnoreCase("Available"));
-		
+
 		/* Class Details */
-		classDetailsService.addClassDetails(new ClassDetails("One", 30));
-		classDetailsService.addClassDetails(new ClassDetails("Two", 20));
-		classDetailsService.addClassDetails(new ClassDetails("Three", 34));
-		classDetailsService.addClassDetails(new ClassDetails("Four", 25));
-		classDetailsService.addClassDetails(new ClassDetails("Five", 40));
-		classDetailsService.addClassDetails(new ClassDetails("Six", 30));
-		classDetailsService.addClassDetails(new ClassDetails("seven", 35));
+		ClassDetails one = new ClassDetails("One", 30);
+		classDetailsService.addClassDetails(one);
+		ClassDetails two = new ClassDetails("Two", 20);
+		classDetailsService.addClassDetails(two);
+		ClassDetails three = new ClassDetails("Three", 34);
+		classDetailsService.addClassDetails(three);
+		ClassDetails four = new ClassDetails("Four", 25);
+		classDetailsService.addClassDetails(four);
+		ClassDetails five = new ClassDetails("Five", 40);
+		classDetailsService.addClassDetails(five);
+		ClassDetails six = new ClassDetails("Six", 30);
+		classDetailsService.addClassDetails(six);
+		ClassDetails seven = new ClassDetails("seven", 35);
+		classDetailsService.addClassDetails(seven);
 		log.info("All Class Details -> {}", classDetailsService.getAllClassDetails());
-		
-		
+
 		/* Teacher */
-		teacherServeice.addTeacher(new Teacher("Abdul salam", TeacherType.REGULAR));
-		teacherServeice.addTeacher(new Teacher("Bashar", TeacherType.PARTTIME));
+		Teacher t1 = new Teacher("Abdul salam", TeacherType.REGULAR);
+		teacherServeice.addTeacher(t1);
+		Teacher t2 = new Teacher("Bashar", TeacherType.PARTTIME);
+		teacherServeice.addTeacher(t2);
+
 		log.info("All Teachers -> {}", teacherServeice.getAllTeachers());
-		log.info("All Teachers by type -> {}",teacherServeice.getAllTeachersByType(TeacherType.PARTTIME));
-		
-		/*Course*/
-		courseService.addCourse(new Course("Physics", "PHY"));
-		courseService.addCourse(new Course("Chemistry", "CHE"));
-		courseService.addCourse(new Course("Bangla", "BAN"));
-		courseService.addCourse(new Course("English", "ENG"));
-		courseService.addCourse(new Course("Math", "MAT"));
-		
+		log.info("All Teachers by type -> {}", teacherServeice.getAllTeachersByType(TeacherType.PARTTIME));
+
+		/* Course */
+		Course phy = new Course("Physics", "PHY");
+		courseService.addCourse(phy);
+		Course che = new Course("Chemistry", "CHE");
+		courseService.addCourse(che);
+		Course ban = new Course("Bangla", "BAN");
+		courseService.addCourse(ban);
+		Course eng = new Course("English", "ENG");
+		courseService.addCourse(eng);
+		Course mat = new Course("Math", "MAT");
+		courseService.addCourse(mat);
+
 		log.info("All Courses -> {}", courseService.getAllCourse());
-		
-		
+
+		/* routine */
+
+		ClassRoutine classRoutine = new ClassRoutine(one);
+		classRoutineService.addRoutine(classRoutine);
+		classRoutineService.addRoutine(new ClassRoutine(two));
+		classRoutineService.addRoutine(new ClassRoutine(three));
+		classRoutineService.addRoutine(new ClassRoutine(four));
+		log.info("Class Routine -> {}", classRoutineService.getAllRoutines());
 	}
 
 }
