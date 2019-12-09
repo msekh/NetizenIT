@@ -1,6 +1,7 @@
 package com.netizenbd.springbootApp.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -35,6 +36,10 @@ public class StudentController {
 		return ResponseEntity.ok().body(service.getAllStudents());
 	}
 
+	@GetMapping("/all_students_by_tId/{tId}")
+	public ResponseEntity<List<Student>> getAllStudentsByTeacherId(@PathVariable(value = "tId") Long tId) {
+		return ResponseEntity.ok().body(service.getAllStudentsByTeacherId(tId));
+	}
 	/* Add a Student */
 	@PostMapping("/add_students")
 	public ResponseEntity<Student> createStudent(@RequestBody Student Student) {
@@ -43,8 +48,8 @@ public class StudentController {
 
 	/* Find a student */
 	@GetMapping("/students/{id}")
-	public Optional<Student> getStudentById(@PathVariable(value = "id") Long id) {
-		return Optional.ofNullable(this.repo.findById(id))
+	public Optional<Student> getStudentById(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
+		return Optional.ofNullable(this.service.getStudentById(id))
 				.orElseThrow(() -> new ResourceNotFoundException("Student ", "id", id));
 
 	}
@@ -68,4 +73,12 @@ public class StudentController {
 		service.deleteStudent(sId);
 		return "Deleted";
 	}
+	
+	/* Add Student into HashMap */
+	@GetMapping("/show_all_student")
+	public ResponseEntity<Map<Long, Student>> getShowAllStudents(){
+		return ResponseEntity.ok().body(service.getAllStudentsUsingMap());
+	}
+	
+	
 }

@@ -4,14 +4,13 @@ import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
 
 public enum TeacherType {
 	
-		REGULAR("Regular"), PARTTIME("Part time");
+		REGULAR("Regular"), PARTTIME("Part time") , CONTRUCTUAL("contructual");
 	private String tType;
 
 
 	private TeacherType(String tType) {
 		this.tType = tType;
 	}
-
 
 	public TeacherType getType(String typeValue) {
 		

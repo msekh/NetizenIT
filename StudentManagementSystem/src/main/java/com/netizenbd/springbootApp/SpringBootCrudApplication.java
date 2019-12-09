@@ -43,16 +43,34 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		/* Teacher */
+		Teacher t1 = new Teacher("Abdul salam", TeacherType.REGULAR);
+		teacherServeice.addTeacher(t1);
+		Teacher t2 = new Teacher("Bashar", TeacherType.PARTTIME);
+		teacherServeice.addTeacher(t2);
+		Teacher t3 = new Teacher("Bashar", TeacherType.CONTRUCTUAL);
+		teacherServeice.addTeacher(t3);
+		/*
 		/* Sudent */
-		Student s1 = new Student("Sekh", "Mahadi");
+		Student s1 = new Student("Sekh", "Mahadi", 101l, t1);
 		service.createStudent(s1);
-		Student s2 = new Student("Shekh", "Rupon");
+
+		Student s2 = new Student("Shekh", "Rupon",102l,t2);
 		service.createStudent(s2);
-		Student s3 = new Student("Shekh", "Niaz");
+
+		Student s3 = new Student("Shekh", "Niaz",104l,t3);
 		service.createStudent(s3);
 
+		Student s4 = new Student("Abid", "hasan",103l,t1);
+		service.createStudent(s4);
+		/*
+		 * service.addStudent(s1); service.addStudent(s2); service.addStudent(s3);
+		 * service.addStudent(s4);
+		 */
+
 		log.info("All Studentss -> {}", service.getAllStudents());
-		log.info("Single Student -> {}", service.getStudentById(2));
+		// log.info("Single Student -> {}", service.getStudentById(2L));
+		// System.out.println(service.getStudentById(1l));
 		/* Class Room */
 		ClassRoom cr1 = new ClassRoom("C04", 20, "Available");
 		classService.addClassRoom(cr1);
@@ -86,12 +104,22 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		classDetailsService.addClassDetails(seven);
 		log.info("All Class Details -> {}", classDetailsService.getAllClassDetails());
 
-		/* Teacher */
-		Teacher t1 = new Teacher("Abdul salam", TeacherType.REGULAR);
-		teacherServeice.addTeacher(t1);
-		Teacher t2 = new Teacher("Bashar", TeacherType.PARTTIME);
-		teacherServeice.addTeacher(t2);
+		
+		/* Student s1 = new Student("Sekh", "Mahadi", 101l, t1);
+		 * service.createStudent(s1);
+		 * 
+		 * Student s2 = new Student("Shekh", "Rupon",102l,t2);
+		 * service.createStudent(s2);
+		 * 
+		 * Student s3 = new Student("Shekh", "Niaz",104l,t3); service.createStudent(s3);
+		 */
 
+		/*
+		 * service.addStudent(s1); service.addStudent(s2); service.addStudent(s3);
+		 * service.addStudent(s4);
+		 */
+
+		log.info("All Studentss -> {}", service.getAllStudents());
 		log.info("All Teachers -> {}", teacherServeice.getAllTeachers());
 		log.info("All Teachers by type -> {}", teacherServeice.getAllTeachersByType(TeacherType.PARTTIME));
 
