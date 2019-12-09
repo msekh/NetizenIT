@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.netizenbd.springbootApp.dao.ClassRoomRepository;
 import com.netizenbd.springbootApp.entity.ClassRoom;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.ClassRoomRepository;
 
 @Service
 public class ClassRoomServiceImpl {

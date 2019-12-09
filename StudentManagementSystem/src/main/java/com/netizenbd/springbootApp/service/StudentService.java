@@ -7,6 +7,7 @@ import com.netizenbd.springbootApp.entity.Student;
 
 
 public interface StudentService {
+	
 	Student createStudent(Student student);
 
 	Student updateStudent(Student student);

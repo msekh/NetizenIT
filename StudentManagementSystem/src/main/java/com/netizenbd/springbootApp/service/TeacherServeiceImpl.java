@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netizenbd.springbootApp.dao.TeacherRepository;
 import com.netizenbd.springbootApp.entity.Teacher;
 import com.netizenbd.springbootApp.entity.TeacherType;
+import com.netizenbd.springbootApp.repository.TeacherRepository;
 
 @Service
 public class TeacherServeiceImpl {

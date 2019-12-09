@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netizenbd.springbootApp.dao.TeacherRepository;
 import com.netizenbd.springbootApp.entity.Teacher;
 import com.netizenbd.springbootApp.entity.TeacherType;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.TeacherRepository;
 import com.netizenbd.springbootApp.service.TeacherServeiceImpl;
 
 @RestController

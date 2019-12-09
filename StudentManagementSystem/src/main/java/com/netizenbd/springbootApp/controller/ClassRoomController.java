@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netizenbd.springbootApp.dao.ClassRoomRepository;
 import com.netizenbd.springbootApp.entity.ClassRoom;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.ClassRoomRepository;
 import com.netizenbd.springbootApp.service.ClassRoomServiceImpl;
 
 @RestController

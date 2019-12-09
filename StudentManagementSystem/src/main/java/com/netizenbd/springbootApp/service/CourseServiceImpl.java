@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netizenbd.springbootApp.dao.CourseRepository;
 import com.netizenbd.springbootApp.entity.Course;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.CourseRepository;
 
 @Service
 public class CourseServiceImpl {

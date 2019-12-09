@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netizenbd.springbootApp.dao.StudentRepository;
 import com.netizenbd.springbootApp.entity.Student;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.StudentRepository;
 
 @Service
 public class StudentServiceImpl {

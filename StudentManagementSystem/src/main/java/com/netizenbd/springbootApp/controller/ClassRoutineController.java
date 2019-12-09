@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netizenbd.springbootApp.dao.ClassRoutineRepository;
 import com.netizenbd.springbootApp.entity.ClassRoutine;
+import com.netizenbd.springbootApp.repository.ClassRoutineRepository;
 import com.netizenbd.springbootApp.service.ClassRoutineServiceImpl;
 
 @RestController

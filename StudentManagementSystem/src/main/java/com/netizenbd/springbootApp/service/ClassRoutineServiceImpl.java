@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netizenbd.springbootApp.dao.ClassRoutineRepository;
 import com.netizenbd.springbootApp.entity.ClassRoutine;
+import com.netizenbd.springbootApp.repository.ClassRoutineRepository;
 
 @Service
 public class ClassRoutineServiceImpl {

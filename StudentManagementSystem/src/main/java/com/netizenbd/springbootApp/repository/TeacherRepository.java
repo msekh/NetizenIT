@@ -1,4 +1,4 @@
-package com.netizenbd.springbootApp.dao;
+package com.netizenbd.springbootApp.repository;
 
 import java.util.List;
 import java.util.Optional;

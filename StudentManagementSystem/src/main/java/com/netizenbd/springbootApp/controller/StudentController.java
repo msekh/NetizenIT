@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netizenbd.springbootApp.dao.StudentRepository;
 import com.netizenbd.springbootApp.entity.Student;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
+import com.netizenbd.springbootApp.repository.StudentRepository;
 import com.netizenbd.springbootApp.service.StudentServiceImpl;
 
 @RestController
