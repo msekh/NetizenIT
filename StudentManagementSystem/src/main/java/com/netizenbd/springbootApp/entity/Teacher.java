@@ -1,5 +1,7 @@
 package com.netizenbd.springbootApp.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
@@ -29,5 +32,4 @@ public class Teacher {
 	@NonNull
 	@Enumerated(EnumType.STRING)
 	private TeacherType type;
-
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.netizenbd.springbootApp.entity.Student;
+import com.netizenbd.springbootApp.entity.TutorReportsDTO;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
 import com.netizenbd.springbootApp.repository.StudentRepository;
 
@@ -38,6 +39,8 @@ public class StudentServiceImpl {
 		return repo.save(student);
 	}
 
+	
+	
 	public Student updateStudent(Student student) {
 		return this.repo.save(student);
 	}
@@ -56,10 +59,17 @@ public class StudentServiceImpl {
 				.orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
 		this.repo.delete(deleteStudent);
 	}
-	
-	
+		
 	public List<Student> getAllStudentsByTeacherId(Long tId){
 		return this.repo.findByTeacher_Id(tId);
+	}
+	
+	public TutorReportsDTO getSingleTutorReports() {
+
+		//Student student = repo.;
+		//TutorReportsDTO tr = new TutorReportsDTO();
+		
+		return new TutorReportsDTO();
 	}
 
 }
