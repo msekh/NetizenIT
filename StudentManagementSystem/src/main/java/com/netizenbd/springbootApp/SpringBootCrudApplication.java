@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.netizenbd.springbootApp.entity.ClassDetails;
 import com.netizenbd.springbootApp.entity.ClassRoom;
@@ -22,6 +24,8 @@ import com.netizenbd.springbootApp.service.TeacherServeiceImpl;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@EntityScan("com.netizenbd.springbootApp.entity")
+@EnableJpaRepositories("com.netizenbd.springbootApp.repository")
 @SpringBootApplication
 public class SpringBootCrudApplication implements CommandLineRunner {
 	@Autowired
@@ -48,7 +52,7 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		teacherServeice.addTeacher(t1);
 		Teacher t2 = new Teacher("Bashar", TeacherType.PARTTIME);
 		teacherServeice.addTeacher(t2);
-		Teacher t3 = new Teacher("Bashar", TeacherType.CONTRUCTUAL);
+		Teacher t3 = new Teacher("Abdul kadir", TeacherType.CONTRUCTUAL);
 		teacherServeice.addTeacher(t3);
 		/*
 		/* Sudent */
@@ -145,6 +149,8 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		classRoutineService.addRoutine(new ClassRoutine(three));
 		classRoutineService.addRoutine(new ClassRoutine(four));
 		log.info("Class Routine -> {}", classRoutineService.getAllRoutines());
+		
+		//System.out.println(teacherServeice.findTutorReportsDTOById(10001l));
 	}
 
 }

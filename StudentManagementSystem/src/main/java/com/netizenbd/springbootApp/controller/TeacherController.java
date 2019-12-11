@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netizenbd.springbootApp.entity.Student;
+import com.netizenbd.springbootApp.dto.TutorReportsDTO;
 import com.netizenbd.springbootApp.entity.Teacher;
 import com.netizenbd.springbootApp.entity.TeacherType;
 import com.netizenbd.springbootApp.exeption.ResourceNotFoundException;
@@ -62,5 +62,13 @@ public class TeacherController {
 
 		return ResponseEntity.ok(upateTeacher);
 	}
-	
+	@GetMapping("/single_tutor/{id}")
+	public ResponseEntity<TutorReportsDTO> getSingleTutor(@PathVariable(value = "id") Long id){
+		return ResponseEntity.ok().body(teacherServeice.findTutorReportsDTOById(id));	
+	}
+	/*
+	 * @GetMapping("/all_tutors") public ResponseEntity<List<TutorReportsDTO>>
+	 * getAllTutorReports(){ return
+	 * ResponseEntity.ok().body(teacherServeice.findAllTutorReportsDTOs()); }
+	 */
 }

@@ -1,6 +1,8 @@
-package com.netizenbd.springbootApp.entity;
+package com.netizenbd.springbootApp.dto;
 
 import java.util.List;
+
+import com.netizenbd.springbootApp.entity.Student;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,13 +11,14 @@ import lombok.NonNull;
 import lombok.experimental.Accessors;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
 public class TutorReportsDTO {
+	
 	private Long teacherId;
 	@NonNull
 	private String teacherName;
 	@NonNull
-	private List<Student> students;
+	private List<StudentDTO> students;	
 }
