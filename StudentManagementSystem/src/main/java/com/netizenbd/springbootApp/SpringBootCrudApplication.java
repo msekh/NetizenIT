@@ -48,33 +48,37 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		/* Teacher */
+
 		Teacher t1 = new Teacher("Abdul salam", TeacherType.REGULAR);
 		teacherServeice.addTeacher(t1);
 		Teacher t2 = new Teacher("Bashar", TeacherType.PARTTIME);
 		teacherServeice.addTeacher(t2);
 		Teacher t3 = new Teacher("Abdul kadir", TeacherType.CONTRUCTUAL);
 		teacherServeice.addTeacher(t3);
-		/*
+		
+
 		/* Sudent */
+
 		Student s1 = new Student("Sekh", "Mahadi", 101l, t1);
 		service.createStudent(s1);
 
-		Student s2 = new Student("Shekh", "Rupon",102l,t2);
+		Student s2 = new Student("Shekh", "Rupon", 102l, t2);
 		service.createStudent(s2);
 
-		Student s3 = new Student("Shekh", "Niaz",104l,t3);
+		Student s3 = new Student("Shekh", "Niaz", 104l, t3);
 		service.createStudent(s3);
 
-		Student s4 = new Student("Abid", "hasan",103l,t1);
+		Student s4 = new Student("Abid", "hasan", 103l, t1);
 		service.createStudent(s4);
+
 		/*
 		 * service.addStudent(s1); service.addStudent(s2); service.addStudent(s3);
 		 * service.addStudent(s4);
 		 */
-
-		log.info("All Studentss -> {}", service.getAllStudents());
-		// log.info("Single Student -> {}", service.getStudentById(2L));
-		// System.out.println(service.getStudentById(1l));
+		log.info("All Studentss under one teacher-> {}", teacherServeice.studentDTOList(10001l));
+		log.info("All Studentss -> {}", service.getAllStudents()); //
+		log.info("Single Student -> {}", service.getStudentById(2L)); //
+		System.out.println(service.getStudentById(1l));
 		/* Class Room */
 		ClassRoom cr1 = new ClassRoom("C04", 20, "Available");
 		classService.addClassRoom(cr1);
@@ -91,8 +95,7 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		log.info("All Class Room Find By title and description-> {}",
 				classService.findClassroomsByDescriptionIgnoreCase("Available"));
 
-		/* Class Details */
-		ClassDetails one = new ClassDetails("One", 30);
+		/* Class Details */ ClassDetails one = new ClassDetails("One", 30);
 		classDetailsService.addClassDetails(one);
 		ClassDetails two = new ClassDetails("Two", 20);
 		classDetailsService.addClassDetails(two);
@@ -108,14 +111,15 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		classDetailsService.addClassDetails(seven);
 		log.info("All Class Details -> {}", classDetailsService.getAllClassDetails());
 
-		
-		/* Student s1 = new Student("Sekh", "Mahadi", 101l, t1);
+		/*
+		 * Student s1 = new Student("Sekh", "Mahadi", 101l, t1);
 		 * service.createStudent(s1);
 		 * 
 		 * Student s2 = new Student("Shekh", "Rupon",102l,t2);
 		 * service.createStudent(s2);
 		 * 
 		 * Student s3 = new Student("Shekh", "Niaz",104l,t3); service.createStudent(s3);
+		 * 
 		 */
 
 		/*
@@ -127,8 +131,7 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		log.info("All Teachers -> {}", teacherServeice.getAllTeachers());
 		log.info("All Teachers by type -> {}", teacherServeice.getAllTeachersByType(TeacherType.PARTTIME));
 
-		/* Course */
-		Course phy = new Course("Physics", "PHY");
+		/* Course */ Course phy = new Course("Physics", "PHY");
 		courseService.addCourse(phy);
 		Course che = new Course("Chemistry", "CHE");
 		courseService.addCourse(che);
@@ -149,8 +152,8 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		classRoutineService.addRoutine(new ClassRoutine(three));
 		classRoutineService.addRoutine(new ClassRoutine(four));
 		log.info("Class Routine -> {}", classRoutineService.getAllRoutines());
-		
-		//System.out.println(teacherServeice.findTutorReportsDTOById(10001l));
+
+		// System.out.println(teacherServeice.findTutorReportsDTOById(10001l));
 	}
 
 }

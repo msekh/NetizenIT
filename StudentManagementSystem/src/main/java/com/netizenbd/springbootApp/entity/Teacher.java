@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,5 +32,7 @@ public class Teacher {
 	@NonNull
 	@Enumerated(EnumType.STRING)
 	private TeacherType type;
+	
+	
 
 }

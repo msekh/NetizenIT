@@ -62,15 +62,17 @@ public class StudentServiceImpl {
 		return this.repo.findByTeacher_Id(tId);
 	}
 
-	public List<TutorReportsDTO> getSingleTutorReports() {
-
-		Student student = new Student();
-		// TutorReportsDTO tr = new TutorReportsDTO();
-
-		return Arrays.asList(new TutorReportsDTO().setTeacherId(student.getTeacher().getId())
-				.setTeacherName(student.getTeacher().getTeacherName())
-				.setStudents(repo.findByTeacherDTO_Id(student.getTeacher().getId())));
-
-	}
-
+	/*
+	 * public List<TutorReportsDTO> getSingleTutorReports() {
+	 * 
+	 * Student student = new Student(); // TutorReportsDTO tr = new
+	 * TutorReportsDTO();
+	 * 
+	 * return Arrays.asList(new
+	 * TutorReportsDTO().setTeacherId(student.getTeacher().getId())
+	 * .setTeacherName(student.getTeacher().getTeacherName())
+	 * .setStudents(repo.findByTeacherDTO_Id(student.getTeacher().getId())));
+	 * 
+	 * }
+	 */
 }

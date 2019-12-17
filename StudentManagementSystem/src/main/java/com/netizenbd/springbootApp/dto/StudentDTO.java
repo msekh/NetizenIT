@@ -1,6 +1,10 @@
 package com.netizenbd.springbootApp.dto;
 
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +24,5 @@ public class StudentDTO {
 	@NonNull
 	private Long rollId;
 	@NonNull
-	private TeacherDTO teacher;
+	private TeacherDTO teacherDTO;
 }

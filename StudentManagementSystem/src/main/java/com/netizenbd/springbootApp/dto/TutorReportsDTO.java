@@ -2,7 +2,8 @@ package com.netizenbd.springbootApp.dto;
 
 import java.util.List;
 
-import com.netizenbd.springbootApp.entity.Student;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +21,6 @@ public class TutorReportsDTO {
 	@NonNull
 	private String teacherName;
 	@NonNull
+	@JsonIgnoreProperties(value = "teacherDTO")
 	private List<StudentDTO> students;	
 }

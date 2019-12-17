@@ -1,6 +1,7 @@
 package com.netizenbd.springbootApp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,7 +43,6 @@ public class TeacherController {
 	public ResponseEntity<List<Teacher>> getTeachersByType(@PathVariable(value = "type") TeacherType type) {
 		return ResponseEntity.ok().body(teacherServeice.getAllTeachersByType(type));
 	}
-	
 
 	@PostMapping("/add_teacher")
 	public ResponseEntity<Teacher> addTeacher(@Valid @RequestBody Teacher teacher) {
@@ -57,15 +57,17 @@ public class TeacherController {
 
 		teacher.setTeacherName(teacherDetails.getTeacherName());
 		teacher.setType(teacherDetails.getType());
-		
-		final Teacher upateTeacher  = teacherServeice.upateTeacher(teacher);
+
+		final Teacher upateTeacher = teacherServeice.upateTeacher(teacher);
 
 		return ResponseEntity.ok(upateTeacher);
 	}
+
 	@GetMapping("/single_tutor/{id}")
-	public ResponseEntity<TutorReportsDTO> getSingleTutor(@PathVariable(value = "id") Long id){
-		return ResponseEntity.ok().body(teacherServeice.findTutorReportsDTOById(id));	
+	public ResponseEntity<TutorReportsDTO> getSingleTutor(@PathVariable(value = "id") Long id) {
+		return ResponseEntity.ok().body(teacherServeice.findSingleTeacherAllStudents(id));
 	}
+
 	/*
 	 * @GetMapping("/all_tutors") public ResponseEntity<List<TutorReportsDTO>>
 	 * getAllTutorReports(){ return

@@ -1,5 +1,9 @@
 package com.netizenbd.springbootApp.entity;
 
+
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,10 +37,9 @@ public class Student {
 	private String lastName;
 	@NonNull
 	private Long rollId;
-	
+
 	@NonNull
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "t_id", nullable = false)
 	private Teacher teacher;
-
 }

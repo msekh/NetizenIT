@@ -16,7 +16,6 @@ import com.netizenbd.springbootApp.entity.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 List<Student> findByTeacher_Id(Long teacherId);
+List<Student> findAll();
 
-@Transactional
-List<StudentDTO> findByTeacherDTO_Id(Long teacherId);
 }

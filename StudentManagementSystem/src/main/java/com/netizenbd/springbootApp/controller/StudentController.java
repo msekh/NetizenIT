@@ -81,8 +81,9 @@ public class StudentController {
 		return ResponseEntity.ok().body(service.getAllStudentsUsingMap());
 	}
 	
-	@GetMapping("/single_tutor")
-	public ResponseEntity<List<TutorReportsDTO>> getSingleTutorsReports(){			
-		return ResponseEntity.ok(service.getSingleTutorReports());
-	}
+	/*
+	 * @GetMapping("/single_tutor") public ResponseEntity<List<TutorReportsDTO>>
+	 * getSingleTutorsReports(){ return
+	 * ResponseEntity.ok(service.getSingleTutorReports()); }
+	 */
 }
