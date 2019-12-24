@@ -103,7 +103,7 @@ public class TeacherServeiceImpl {
 	public TutorReportsDTO findSingleTeacherAllStudents(Long teacherId) {
 
 		//List<Student> singleTeacherAllStudents = sRepo.findByTeacher_Id(teacherId);
-		List<StudentDTO> singleTeacherAllStudents  =studentDTOList(teacherId);
+		List<StudentDTO> singleTeacherAllStudents  = studentDTOList(teacherId);
 		if (singleTeacherAllStudents.isEmpty()) {
 			return null;
 		}

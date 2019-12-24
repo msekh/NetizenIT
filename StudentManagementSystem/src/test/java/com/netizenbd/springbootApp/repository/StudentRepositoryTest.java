@@ -10,6 +10,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -18,26 +21,29 @@ import com.netizenbd.springbootApp.entity.Teacher;
 import com.netizenbd.springbootApp.entity.TeacherType;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@DataJpaTest
+@AutoConfigureTestDatabase
 class StudentRepositoryTest {
+	@Autowired
+	private TestEntityManager testEntity;
 	@Autowired
 	private StudentRepository studentRepo;
 	@Autowired
 	private TeacherRepository teacherRepository;
 
-	/*
-	 * @Test void testGetAllStudents() {
-	 * studentRepo.findAll().stream().peek(System.out::println);
-	 * 
-	 * // assertThat(students).hasSize(4); }
-	 */
+	
+	  @Test
+	  void testGetAllStudents() {
+	 List<Student> students = studentRepo.findAll();
+	  
+	  assertThat(students).hasSize(4); 
+	  }
+	 
 
-	@Test
-	void testSaveTeacher() {
-		for (Teacher teacher : teacherList()) {
-			this.teacherRepository.save(teacher);
-		}
-	}
+	/*
+	 * @Test void testSaveTeacher() { for (Teacher teacher : teacherList()) {
+	 * this.teacherRepository.save(teacher); } }
+	 */
 
 	@Test
 	void testSaveStudent() {

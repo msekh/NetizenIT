@@ -1,8 +1,4 @@
-package com.netizenbd.springbootApp.dto;
-
-
-
-
+package com.mtech.timetable.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -14,15 +10,13 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDTO {
+public class GeneralInfoDTO {
 	
-	private Long id;
+	private Long infoId;
 	@NonNull
-	private String firstName;
+	private String infoName;
 	@NonNull
-	private String lastName;
+	private String defaultId;
 	@NonNull
-	private Long rollId;
-	@NonNull
-	private TeacherDTO teacherDTO;
+	private String typeDefaultId;
 }
