@@ -1,20 +1,24 @@
 package com.netizenbd.springbootApp.entity;
 
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+
 @Entity
 @Data
-@RequiredArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class ClassDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "s_class_id")
@@ -24,6 +28,8 @@ public class ClassDetails{
 	private String className;
 	@NonNull
 	private Integer stuTotal;
+	@OneToMany
+	private Set<Course> course;
  
 
 }

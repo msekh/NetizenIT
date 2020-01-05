@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mtech.timetable.dto.RoutineDTO;
 import com.mtech.timetable.entity.GeneralInfo;
-import com.mtech.timetable.entity.Routine;
 import com.mtech.timetable.repository.GeneralInfoRepository;
 import com.mtech.timetable.repository.RoutineRepository;
 import com.mtech.timetable.service.RoutineServiceImpl;

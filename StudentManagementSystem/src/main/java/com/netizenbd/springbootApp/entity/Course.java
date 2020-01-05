@@ -24,5 +24,6 @@ public class Course {
 	private String courseName;
 	@NonNull
 	private String courseCode;
+	
 
 }
