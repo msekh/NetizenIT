@@ -55,7 +55,6 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		teacherServeice.addTeacher(t2);
 		Teacher t3 = new Teacher("Abdul kadir", TeacherType.CONTRUCTUAL);
 		teacherServeice.addTeacher(t3);
-		
 
 		/* Sudent */
 
@@ -95,20 +94,22 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 		log.info("All Class Room Find By title and description-> {}",
 				classService.findClassroomsByDescriptionIgnoreCase("Available"));
 
-		/* Class Details */ ClassDetails one = new ClassDetails("One", 30);
-		classDetailsService.addClassDetails(one);
-		ClassDetails two = new ClassDetails("Two", 20);
-		classDetailsService.addClassDetails(two);
-		ClassDetails three = new ClassDetails("Three", 34);
-		classDetailsService.addClassDetails(three);
-		ClassDetails four = new ClassDetails("Four", 25);
-		classDetailsService.addClassDetails(four);
-		ClassDetails five = new ClassDetails("Five", 40);
-		classDetailsService.addClassDetails(five);
-		ClassDetails six = new ClassDetails("Six", 30);
-		classDetailsService.addClassDetails(six);
-		ClassDetails seven = new ClassDetails("seven", 35);
-		classDetailsService.addClassDetails(seven);
+		/* Class Details */
+		/*
+		 * ClassDetails one = new ClassDetails("One", 30);
+		 * 
+		 * classDetailsService.addClassDetails(one); ClassDetails two = new
+		 * ClassDetails("Two", 20); classDetailsService.addClassDetails(two);
+		 * ClassDetails three = new ClassDetails("Three", 34);
+		 * classDetailsService.addClassDetails(three); ClassDetails four = new
+		 * ClassDetails("Four", 25); classDetailsService.addClassDetails(four);
+		 * ClassDetails five = new ClassDetails("Five", 40);
+		 * classDetailsService.addClassDetails(five); ClassDetails six = new
+		 * ClassDetails("Six", 30); classDetailsService.addClassDetails(six);
+		 * ClassDetails seven = new ClassDetails("seven", 35);
+		 * 
+		 * classDetailsService.addClassDetails(seven);
+		 */
 		log.info("All Class Details -> {}", classDetailsService.getAllClassDetails());
 
 		/*
@@ -146,11 +147,13 @@ public class SpringBootCrudApplication implements CommandLineRunner {
 
 		/* routine */
 
-		ClassRoutine classRoutine = new ClassRoutine(one);
-		classRoutineService.addRoutine(classRoutine);
-		classRoutineService.addRoutine(new ClassRoutine(two));
-		classRoutineService.addRoutine(new ClassRoutine(three));
-		classRoutineService.addRoutine(new ClassRoutine(four));
+		/*
+		 * ClassRoutine classRoutine = new ClassRoutine(one);
+		 * classRoutineService.addRoutine(classRoutine);
+		 * classRoutineService.addRoutine(new ClassRoutine(two));
+		 * classRoutineService.addRoutine(new ClassRoutine(three));
+		 * classRoutineService.addRoutine(new ClassRoutine(four));
+		 */
 		log.info("Class Routine -> {}", classRoutineService.getAllRoutines());
 
 		// System.out.println(teacherServeice.findTutorReportsDTOById(10001l));
